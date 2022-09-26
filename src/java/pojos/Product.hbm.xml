@@ -1,0 +1,60 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Dec 15, 2019 5:19:43 PM by Hibernate Tools 3.6.0 -->
+<hibernate-mapping>
+    <class name="pojos.Product" table="product" catalog="myperfume">
+        <id name="idProduct" type="java.lang.Integer">
+            <column name="idProduct" />
+            <generator class="identity" />
+        </id>
+        <property name="name" type="string">
+            <column name="name" length="45" />
+        </property>
+        <property name="minumumQty" type="java.lang.Integer">
+            <column name="minumumQty" />
+        </property>
+        <property name="description" type="string">
+            <column name="description" length="65535" />
+        </property>
+        <property name="volume" type="string">
+            <column name="volume" length="45" />
+        </property>
+        <property name="category" type="string">
+            <column name="category" length="45" />
+        </property>
+        <property name="gender" type="java.lang.Byte">
+            <column name="gender" />
+        </property>
+        <property name="status" type="java.lang.Byte">
+            <column name="status" />
+        </property>
+        <property name="imageurl" type="string">
+            <column name="imageurl" length="65535" />
+        </property>
+        <set name="grncartsessions" table="grncartsession" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idProduct" not-null="true" />
+            </key>
+            <one-to-many class="pojos.Grncartsession" />
+        </set>
+        <set name="stocks" table="stock" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idProduct" not-null="true" />
+            </key>
+            <one-to-many class="pojos.Stock" />
+        </set>
+        <set name="invoiceitems" table="invoiceitem" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idProduct" not-null="true" />
+            </key>
+            <one-to-many class="pojos.Invoiceitem" />
+        </set>
+        <set name="grnitems" table="grnitem" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idProduct" not-null="true" />
+            </key>
+            <one-to-many class="pojos.Grnitem" />
+        </set>
+    </class>
+</hibernate-mapping>

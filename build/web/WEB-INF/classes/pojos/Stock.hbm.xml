@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Dec 15, 2019 5:19:43 PM by Hibernate Tools 3.6.0 -->
+<hibernate-mapping>
+    <class name="pojos.Stock" table="stock" catalog="myperfume">
+        <id name="idStock" type="java.lang.Integer">
+            <column name="idStock" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="grn" class="pojos.Grn" fetch="select">
+            <column name="idGRN" not-null="true" />
+        </many-to-one>
+        <many-to-one name="product" class="pojos.Product" fetch="select">
+            <column name="idProduct" not-null="true" />
+        </many-to-one>
+        <property name="qty" type="java.lang.Integer">
+            <column name="qty" />
+        </property>
+        <property name="price" type="java.lang.Double">
+            <column name="price" precision="22" scale="0" />
+        </property>
+        <property name="sellingPrice" type="java.lang.Double">
+            <column name="sellingPrice" precision="22" scale="0" />
+        </property>
+        <property name="status" type="java.lang.Byte">
+            <column name="status" />
+        </property>
+        <set name="invocartsessions" table="invocartsession" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idStock" not-null="true" />
+            </key>
+            <one-to-many class="pojos.Invocartsession" />
+        </set>
+        <set name="invoiceitems" table="invoiceitem" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idStock" not-null="true" />
+            </key>
+            <one-to-many class="pojos.Invoiceitem" />
+        </set>
+    </class>
+</hibernate-mapping>

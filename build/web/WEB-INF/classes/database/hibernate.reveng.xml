@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-reverse-engineering PUBLIC "-//Hibernate/Hibernate Reverse Engineering DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-reverse-engineering-3.0.dtd">
+<hibernate-reverse-engineering>
+  <schema-selection match-catalog="myperfume"/>
+  <table-filter match-name="grnitem"/>
+  <table-filter match-name="grncartsession"/>
+  <table-filter match-name="product"/>
+  <table-filter match-name="grn"/>
+  <table-filter match-name="invoiceitem"/>
+  <table-filter match-name="supplier"/>
+  <table-filter match-name="invoice"/>
+  <table-filter match-name="user"/>
+  <table-filter match-name="invocartsession"/>
+  <table-filter match-name="address"/>
+  <table-filter match-name="paymentdetails"/>
+  <table-filter match-name="stock"/>
+</hibernate-reverse-engineering>

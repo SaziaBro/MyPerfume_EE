@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Dec 15, 2019 5:19:43 PM by Hibernate Tools 3.6.0 -->
+<hibernate-mapping>
+    <class name="pojos.Supplier" table="supplier" catalog="myperfume">
+        <id name="idSupplier" type="java.lang.Integer">
+            <column name="idSupplier" />
+            <generator class="identity" />
+        </id>
+        <property name="companyName" type="string">
+            <column name="companyName" length="45" />
+        </property>
+        <property name="businessAddress" type="string">
+            <column name="businessAddress" length="65535" />
+        </property>
+        <property name="email" type="string">
+            <column name="email" length="45" />
+        </property>
+        <property name="tel" type="string">
+            <column name="tel" length="45" />
+        </property>
+        <property name="status" type="java.lang.Byte">
+            <column name="status" />
+        </property>
+        <set name="grns" table="grn" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idSupplier" not-null="true" />
+            </key>
+            <one-to-many class="pojos.Grn" />
+        </set>
+    </class>
+</hibernate-mapping>
